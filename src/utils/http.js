@@ -1,6 +1,7 @@
 import axios from 'axios'
 import store from '../store'
-import qs from 'qs'
+// import qs from 'qs'
+import Cookies from 'js-cookie'
 
 // axios.defaults.timeout = 10000
 axios.defaults.baseURL = process.env.VUE_APP_API_ROOT
@@ -25,8 +26,8 @@ axios.interceptors.response.use(
     //console.log('response' + JSON.stringify(response))
     // 通用逻辑，请求出错，全屏弹层提示
     
-    if (response&&response.status === 401) {
-        console.log('重定向，返回到login页面')
+    if (response&&response.data.errcode === 401) {
+        console.log('未登陆，返回到login页面')
         if(window.parent===window){
             // router.push('/user/login');
         }else{
@@ -48,6 +49,8 @@ axios.interceptors.response.use(
   }
 )
 
+
+
 export default {
   get(url, params = {}) {
     params['t_'+new Date().getTime()]=Math.random()
@@ -56,17 +59,18 @@ export default {
     })
   },
   post(url, params = {}) {
-    if (params.contentType && params.contentType == 'form') {
-      return axios.post(url, qs.stringify(params.data), {
-        headers: {
-        //   'Content-Type': 'application/x-www-form-urlencoded'
-        Accept: 'application/json, text/plain, */*',
-        'App-Version': '1.0.0',
-        }
-      })
-    } else {
-      return axios.post(url, params.data || params)
+    console.log('url',url)
+    var headersData = {
+      'App-Channel': Cookies.get('Channel')?Cookies.get('Channel'):'100001',
+      'Accept': 'application/json, text/plain, */*',
+      'App-Version': '1.0.0',
+    };
+    if (!/\/(login|reg)$/.test(url)) {
+      headersData['Authorization'] =Cookies.get('Token') || '';
     }
+    return axios.post(url, params.data||params, {
+      headers: headersData
+    })
   },
   put(url, data = {}) {
     return axios.put(url, data)

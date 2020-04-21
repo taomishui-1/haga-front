@@ -2,9 +2,12 @@ import Vue from 'vue'
 // import Button from 'ant-design-vue/lib/button';
 // import 'ant-design-vue/dist/antd.css';
 import { Button,FormModel,Input,Icon,Form} from 'ant-design-vue';
+import 'swiper/css/swiper.min.css';
+import "@/styles/animate.css";
 // import 'ant-design-vue/lib/button/style';
 // import 'lib-flexible/flexible';
 import filters from './filters/index'
+import router from './router'
 import App from './App';
 
 Vue.component(Button.name, Button)
@@ -44,4 +47,5 @@ setHtmlFontSize();
 
 new Vue({
   render: h => h(App),
+  router,
 }).$mount('#app')

@@ -1,23 +1,29 @@
 <template>
   <div id="app">
-    <Header/>
-    <Home id="main"/>
-    <Footer/>
+    <div id="islogin">
+      <!-- <Header></Header> -->
+      <div id="main">
+        <transition name="fade">
+        <router-view></router-view>
+      </transition>
+      </div>
+      <router-view name="footer"></router-view>
+      <!-- <Footer></Footer> -->
+    </div>
   </div>
 </template>
-
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import Home from './pages/home/index.vue'
-import Footer from './pages/footer/index.vue'
-import Header from './pages/header/index.vue'
+// import Home from './pages/home/index.vue'
+// import Footer from './pages/footer/index.vue'
+// import Header from './pages/header/index.vue'
 
 export default {
   name: 'App',
   components: {
-    Home,
-    Footer,
-    Header
+    // Home,
+    // Footer,
+    // Header
   }
 }
 </script>
@@ -34,10 +40,27 @@ html,body{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  display: flex;
-  flex-direction: column;
-  #main{
-    flex: 1;
+  
+  #islogin{
+    width:100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    #main{
+      flex: 1;
+      width:100%;
+      overflow: hidden;
+      background: #f2f2f2;
+      overflow-y:auto;
+      margin-top:4.75rem /* 76/16 */;
+    }
   }
+  #header{
+    height: 4.75rem /* 76/16 */;
+    width:100%;
+    background: yellow;
+    position: fixed;
+    top:0;
+}
 }
 </style>

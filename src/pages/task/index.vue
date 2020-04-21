@@ -1,10 +1,11 @@
 <template>
-  <div id="header">
-      <p>header</p>
+  <div id="my">
+      任务
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'App',
 
@@ -12,6 +13,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
 
 </style>

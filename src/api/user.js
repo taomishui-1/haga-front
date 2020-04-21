@@ -1,11 +1,14 @@
 import http from '../utils/http'
 
 
-let URL = process.env.VUE_APP_BASE_UCAPIURI
+let URL = process.env.VUE_APP_VAS_UCAPIURI
 // if ('true' !== process.env.VUE_APP_USE_MOCK) {
 //   URL = process.env.VUE_APP_BASE_UCAPIURI
 // }
 
+console.log("dev",process.env)
+
+// console.log('dev^',process.env.VUE_APP_BASEACTIVITYURI,process.env.VUE_APP_VAS_UCAPIURI)
 export default {
   login(params) {
     return http.post(URL+'/passport/login', params)
