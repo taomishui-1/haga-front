@@ -6,6 +6,8 @@
         <div class="gamesList">
             <div class="game_item" v-for="(item,index) of list" :key="index">
                 <img :src="item.imgUrl" alt="">
+                <span>{{item.num}}人在玩</span>
+                <img src="@/assets/images/home/jackpot.png" alt="" class="jackpot" v-show="index==0">
             </div>
         </div>
     </div>
@@ -18,36 +20,34 @@ export default {
             list:[
                 {
                     imgUrl:require('@/assets/images/home/game01.png'),
-                    name:'快乐连消'
+                    name:'快乐连消',
+                    num:'12.3万'
                 },
                 {
                     imgUrl:require('@/assets/images/home/game02.png'),
-                    name:'快乐连消'
+                    name:'快乐连消',
+                    num:'10.1万'
                 },
                 {
                     imgUrl:require('@/assets/images/home/game03.png'),
-                    name:'快乐连消'
+                    name:'快乐连消',
+                    num:'1526'
                 },
                 {
                     imgUrl:require('@/assets/images/home/game04.png'),
-                    name:'快乐连消'
+                    name:'快乐连消',
+                    num:'5124'
                 },
                 {
                     imgUrl:require('@/assets/images/home/game05.png'),
-                    name:'快乐连消'
+                    name:'快乐连消',
+                    num:'3526'
                 },
                 {
                     imgUrl:require('@/assets/images/home/game06.png'),
-                    name:'快乐连消'
+                    name:'快乐连消',
+                    num:'8531'
                 },
-                {
-                    imgUrl:require('@/assets/images/home/game01.png'),
-                    name:'快乐连消'
-                },
-                {
-                    imgUrl:require('@/assets/images/home/game02.png'),
-                    name:'快乐连消'
-                }
             ]
         }
     }
@@ -73,12 +73,27 @@ export default {
             width:49%;
             height: 8.75rem /* 140/16 */;
             margin-bottom:1.5rem /* 24/16 */;
+            position: relative;
             &:nth-of-type(odd){
                 // margin-right: .9375rem /* 15/16 */;
             }
             img{
                 width:100%;
                 height: auto;
+            }
+            span{
+                position: absolute;
+                font-size: 1.25rem /* 20/16 */;
+                color: #fff;
+                bottom:1rem;
+                right: 1.5rem /* 24/16 */;
+                font-weight: 500;
+            }
+            .jackpot{
+                position: absolute;
+                width:8rem /* 128/16 */;
+                top:-.75rem /* 12/16 */;
+                left:-.25rem /* 4/16 */;
             }
         }
     }

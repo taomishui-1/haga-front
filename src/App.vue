@@ -2,11 +2,17 @@
   <div id="app">
     <div id="islogin">
       <!-- <Header></Header> -->
+      <router-view name="header"></router-view>
+      <!-- <router-view ></router-view> -->
       <div id="main">
         <transition name="fade">
-        <router-view></router-view>
+          <keep-alive>
+            <router-view></router-view>
+          </keep-alive>
+        
       </transition>
       </div>
+      
       <router-view name="footer"></router-view>
       <!-- <Footer></Footer> -->
     </div>
@@ -50,17 +56,18 @@ html,body{
       flex: 1;
       width:100%;
       overflow: hidden;
-      background: #f2f2f2;
+      // background: #f2f2f2;
       overflow-y:auto;
-      margin-top:4.75rem /* 76/16 */;
+      // margin-top:4.75rem /* 76/16 */;
     }
   }
   #header{
-    height: 4.75rem /* 76/16 */;
-    width:100%;
-    background: yellow;
-    position: fixed;
-    top:0;
+    // height: 4.75rem /* 76/16 */;
+    // width:100%;
+    // position: fixed;
+    // top:0;
+    // left:0;
+    padding:0 2rem /* 32/16 */;
 }
 }
 </style>

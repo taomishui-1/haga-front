@@ -3,12 +3,19 @@ import Vue from 'vue'
 // import 'ant-design-vue/dist/antd.css';
 import { Button,FormModel,Input,Icon,Form} from 'ant-design-vue';
 import 'swiper/css/swiper.min.css';
+// import 'animate.css/animate.min.css';
 import "@/styles/animate.css";
 // import 'ant-design-vue/lib/button/style';
 // import 'lib-flexible/flexible';
 import filters from './filters/index'
 import router from './router'
+import VueWechatTitle from 'vue-wechat-title'
+
+
 import App from './App';
+
+// Vue.use(require('vue-wechat-title'))
+Vue.use(VueWechatTitle)
 
 Vue.component(Button.name, Button)
 Vue.component(FormModel.name,FormModel)
@@ -24,6 +31,15 @@ Object.keys(filters).forEach(item => {
 
 
 Vue.config.productionTip = false
+
+router.beforeEach((to, from, next) => {
+  /* 路由发生变化修改页面title */
+  if (to.meta.title) {
+  document.title = to.meta.title
+  }
+  next()
+})
+
 
 require('./styles/main.less');
 const setHtmlFontSize = () => {

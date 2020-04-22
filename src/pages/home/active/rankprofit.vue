@@ -1,6 +1,6 @@
 <template>
-  <div id="my">
-      这里是我的页面
+  <div id="shop">
+      榜单--盈利
   </div>
 </template>
 
@@ -12,7 +12,6 @@ export default {
     return{}
   },
   created(){
-    console.log("my^",this.$route)
   }
 
 }

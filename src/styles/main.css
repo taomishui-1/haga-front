@@ -4,6 +4,10 @@ li {
   list-style: none;
 }
 body,
+html {
+  line-height: 1;
+}
+body,
 html,
 div,
 ul,

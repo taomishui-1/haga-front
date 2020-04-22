@@ -1,17 +1,17 @@
 <template>
     <ul class="active">
-        <li>
+        <router-link to="/store" tag="li">
             <img src="@/assets/images/home/shop.png" alt="" class="img">
             <p>商城</p>
-        </li>
-        <li>
+        </router-link>
+        <router-link to="/ranking" tag="li">
             <img src="@/assets/images/home/ranking.png" alt="" class="img">
             <img src="@/assets/images/home/icon_award.png" alt="" class="icon pulse">
             <p>榜单</p>
-        </li>
+        </router-link>
         <li>
             <img src="@/assets/images/home/redpacket.png" alt="" class="img">
-            <p>幸运红包</p>
+            <p>幸运转盘</p>
         </li>
         <li>
             <img src="@/assets/images/home/7day.png" alt="" class="img">
@@ -19,8 +19,8 @@
             <p>七日福利</p>
         </li>
         <li>
-            <img src="@/assets/images/home/active.png" alt="" class="img">
-            <p>活动中心</p>
+            <img src="@/assets/images/home/cat.png" alt="" class="img">
+            <p>招财猫</p>
         </li>
     </ul>
 </template>
