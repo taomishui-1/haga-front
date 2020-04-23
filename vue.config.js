@@ -49,13 +49,9 @@ module.exports = {
         }
       }),
       new webpack.ProvidePlugin({
-
         $:"jquery",
-
         jQuery:"jquery",
-
         "windows.jQuery":"jquery"
-
       })
     ]
       //只有打包生产环境才需要将console删除

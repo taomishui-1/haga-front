@@ -11,7 +11,7 @@ import filters from './filters/index'
 import router from './router'
 import VueWechatTitle from 'vue-wechat-title'
 
-
+// import $ from 'jquery'
 import App from './App';
 
 // Vue.use(require('vue-wechat-title'))
@@ -23,6 +23,8 @@ Vue.component(Input.name,Input)
 Vue.component(Icon.name,Icon)
 Vue.component(Form.name,Form)
 // Vue.component(Message.name,Message)
+
+
 
 // 注入全局过滤器
 Object.keys(filters).forEach(item => {

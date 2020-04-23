@@ -12,9 +12,26 @@ html,
 div,
 ul,
 li,
-img {
+img,
+button,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dt,
+dd,
+dl {
   margin: 0;
   padding: 0;
+  line-height: 1;
+}
+button {
+  border: 0;
+  outline: none;
 }
 img {
   display: block;

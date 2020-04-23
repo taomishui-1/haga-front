@@ -39,8 +39,8 @@ const routes=[
         components:{
             default:()=>import('@/pages/task/index.vue'),
             footer:()=>import('@/pages/footer/index.vue'),
-            // header:()=>import('@/pages/header/amountHeader.vue')
-            header:()=>import('@/pages/header/arrowHeader.vue'),
+            header:()=>import('@/pages/header/amountHeader.vue'),
+            title:()=>import('@/pages/header/arrowHeader.vue'),
         },
         meta:{
             title:'任务'
@@ -54,10 +54,24 @@ const routes=[
         components:{
             default:()=>import('@/pages/award/index.vue'),
             footer:()=>import('@/pages/footer/index.vue'),
-            header:()=>import('@/pages/header/amountHeader.vue')
+            header:()=>import('@/pages/header/amountHeader.vue'),
+            title:()=>import('@/pages/header/arrowHeader.vue'),
         },
         meta:{
             title:'领奖'
+        }
+    },
+    {
+        path:'/award/detail',
+        title:'商品详情',
+        name:'商品详情',
+        iconName:'award',
+        components:{
+            default:()=>import('@/pages/award/detail.vue'),
+            title:()=>import('@/pages/header/arrowHeader.vue'),
+        },
+        meta:{
+            title:'商品详情'
         }
     },
     {
@@ -97,7 +111,7 @@ const routes=[
         name:'榜单',
         iconName:'ranking',
         components:{
-            default:()=>import('@/pages/home/active/ranking.vue'),
+            default:()=>import('@/pages/ranking/ranking.vue'),
             header:()=>import('@/pages/header/arrowHeader.vue'),
             
         },
@@ -109,12 +123,12 @@ const routes=[
             {
               path: 'rankprofit',
               name:'盈利榜',
-              component: () => import('@/pages/home/active/rankprofit.vue')
+              component: () => import('@/pages/ranking/rankprofit.vue')
             },
             {
                 path: 'ranklevel',
                 name:'等级榜',
-                component: () => import('@/pages/home/active/ranklevel.vue')
+                component: () => import('@/pages/ranking/ranklevel.vue')
             },
         ],
         meta:{

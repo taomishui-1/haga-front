@@ -42,16 +42,16 @@
     </div>
     <Active/>
     <Games/>
-    <div class="rightTar">
-      <!-- 活动中心 -->
+    <!-- 活动中心 -->
       <div class="activecenter ">
         <img src="@/assets/images/home/activecenter.png" alt="" class="img">
+        <img src="@/assets/images/home/spot.png" alt="" class="spot">       
       </div>
       <!-- 充值特惠 -->
       <div class="recharge">
         <img src="@/assets/images/home/recharge.png" alt="" class="img swing">
+        <img src="@/assets/images/home/spot.png" alt="" class="spot">
       </div>
-    </div>
   </div>
 </template>
 
@@ -63,7 +63,7 @@ import Swiper from 'swiper'
 import Active from './active.vue'
 import Games from './games.vue'
 // import AmountHeader from '@/pages/header/amountHeader.vue'
-import $ from 'jquery'
+
 
 export default {
   components: {
@@ -131,8 +131,6 @@ export default {
     }
   },
   created(){
-    console.log("$",$('.activecenter .img').attr('src'))
-    
     // $('.messageList').animate({
     //   left:''
     // },1000)
@@ -288,21 +286,6 @@ export default {
     }
     
   }
-  .rightTar{
-    position: fixed;
-    top:0;
-    right: 0.1rem;
-    height: 100vh;
-    width:8.75rem /* 140/16 */;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
-    z-index: 100;
-    div{
-      // margin:7.9375rem /* 127/16 */ 0;
-    }
-  }
   // 活动中心
   .activecenter{
     width:8.375rem /* 134/16 */;
@@ -318,12 +301,25 @@ export default {
       -webkit-transform: rotate3d(0, 0, 1, 0deg);
       transform: rotate3d(0, 0, 1, 0deg);
     }
+    .spot{
+      width:1.25rem;
+      position:absolute;
+      top:0.3rem;
+      right:1.2rem;
+    }
   }
   .recharge{
     position: fixed;
     bottom:8rem /* 76/16 */;
+    right: 0;
     img{
       width:7rem /* 112/16 */;
+    }
+    .spot{
+      width:1.25rem;
+      position:absolute;
+      top:0.4rem;
+      right:0.4rem;
     }
   }
 }

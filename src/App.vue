@@ -2,14 +2,12 @@
   <div id="app">
     <div id="islogin">
       <!-- <Header></Header> -->
+      <router-view name="title"></router-view>
       <router-view name="header"></router-view>
       <!-- <router-view ></router-view> -->
       <div id="main">
         <transition name="fade">
-          <keep-alive>
-            <router-view></router-view>
-          </keep-alive>
-        
+          <router-view></router-view>
       </transition>
       </div>
       
@@ -23,14 +21,13 @@
 // import Home from './pages/home/index.vue'
 // import Footer from './pages/footer/index.vue'
 // import Header from './pages/header/index.vue'
-
 export default {
   name: 'App',
   components: {
     // Home,
     // Footer,
     // Header
-  }
+  },
 }
 </script>
 

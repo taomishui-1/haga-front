@@ -1,115 +1,151 @@
 <template>
-  <div id="task">
-    <div class="header">
-      <Amount></Amount>
-      <BillAmount></BillAmount>
-      <Message></Message>
-    </div>
-    <div class="newtask">
-      <div class="banner">
-        <div class="imgWrap">
-          <img src="@/assets/images/task/banner.png" alt />
-        </div>
-        <div class="taskprogress">
-          <div class="title">
-            <span>完成全部 再得2元话费</span>
-          </div>
-          <div class="tar">
-            <!-- <div class="tarBg">
-              
-            </div>-->
-            <div class="rate"></div>
-          </div>
-          <div class="progress">
-            <span>1/6</span>
-          </div>
-        </div>
-      </div>
-      <div class="taskList">
-
-      </div>
-    </div>
+  <div id="task" @click="taskType()">
+    <NewTask v-if="taskData"></NewTask>
+    <MainTask v-else></MainTask>
   </div>
 </template>
 
 <script>
-import Amount from "@/pages/header/amount.vue";
-import BillAmount from "@/pages/header/billAmount.vue";
-import Message from "@/pages/header/message.vue";
+// import Amount from "@/pages/header/amount.vue";
+// import BillAmount from "@/pages/header/billAmount.vue";
+// import AmountHeader from "@/pages/header/amountHeader.vue";
+import NewTask from "@/pages/task/newTask.vue";
+import MainTask from "@/pages/task/mainTask.vue";
+import $jq from 'jquery'
 export default {
   components: {
-    Amount,
-    BillAmount,
-    Message
+    // AmountHeader,
+    NewTask,
+    MainTask
   },
-  name: "App"
+  name: "App",
+  data(){
+    return {
+      taskData:false
+    }
+  },
+  created(){
+    $jq('.name p').text(this.$route.name)
+  },
+  methods:{
+    taskType(){
+      this.taskData=!this.taskData
+    }
+  }
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 #task {
-  padding: 0 1.75rem /* 28/16 */;
+  // padding: 0 1.75rem /* 28/16 */;
 }
-.header {
-  .amountWrap {
-    transform: scale(1.15);
-    margin-right: 4rem;
-  }
+.header { 
+  height: 3.125rem /* 50/16 */;
 }
-.newtask {
-  .banner {
-    width: 100%;
-    position: relative;
-    .imgWrap {
+
+  .taskList {
+    margin-top: 2.125rem /* 34/16 */;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    li{
+      height: 5.75rem /* 92/16 */;
+      background: #fff;
+      display: flex;
+      align-items: center;
       width: 100%;
-      img {
-        width: 100%;
-        // height: 16.4375rem /* 263/16 */;
+      .gameImg{
+        width: 3.875rem /* 62/16 */;
+        margin-left:.625rem /* 10/16 */;
       }
-    }
-    .taskprogress {
-      height: 6.75rem /* 108/16 */;
-      width: 100%;
-      padding: 0 2.5rem /* 40/16 */ 0 2rem /* 32/16 */;
-      position: absolute;
-      bottom: 2rem;
-      text-align: left;
-      .title {
+      .content{
+        height: 3.375rem /* 54/16 */;
+        margin-left:1.25rem /* 20/16 */;
         text-align: left;
-        span {
-          color: #c19673;
-          font-size: 1.375rem /* 22/16 */;
+        width:28.375rem /* 454/16 */;
+        .taskName{
+          font-size: 1.25rem /* 20/16 */;
+        }
+        .bottom{
+          display: flex;
+          height: 1.875rem /* 30/16 */;
+          .gameProgress{
+            width: 10rem /* 160/16 */;
+            height: 1.25rem /* 20/16 */;
+            margin-top:.5rem;
+            background: #dbdbdb;
+            position: relative;
+            border-radius: .625rem /* 10/16 */;
+            overflow: hidden;
+            .progress{
+              width:100%;
+              height: 100%;
+              border-radius: .625rem /* 10/16 */;
+              position: absolute;
+              top:0;
+              left:0;
+              background: #ffc168;
+              overflow: hidden;
+            }
+            .progressText{
+              position: absolute;
+              top:0;
+              left:0;
+              right:0;
+              bottom:0;
+              margin:auto;
+              color: #7e7e7e;
+              font-size: .75rem /* 12/16 */;
+              text-align: center;
+            }
+          }
+          .telcharge{
+            margin-left:1.625rem /* 26/16 */;
+            margin-top:0.25rem;
+            height: 1.875rem /* 30/16 */;
+            img{
+              width: 1.875rem /* 30/16 */;
+              height: auto;
+              margin-right: .3125rem /* 5/16 */;
+              float: left;
+            }
+            span{
+              font-size: 1rem;
+              height: 100%;
+              line-height: 1;
+              color: #ee6a23;
+            }
+          }
         }
       }
-      .tar {
-        height: 1.5rem /* 24/16 */;
-        width: 100%;
-        background: #a27f60;
-        border-radius: 0.75rem /* 12/16 */;
-        position: relative;
-        margin: 1.25rem /* 20/16 */ 0;
-        overflow: hidden;
-        .rate {
-          width: 18%;
+      .button{
+        width:6.4375rem /* 103/16 */;
+        height: 2.375rem /* 38/16 */;
+        button{
+          width:100%;
           height: 100%;
-          border-radius: 0.75rem /* 12/16 */;
-          background: #f98532;
-          position: absolute;
-          top: 0;
-          left: 0;
+          display: inline-block;
+          border-radius: .625rem /* 10/16 */;
+          text-align: center;
+          line-height: 1;
+          color:#fff;
+        }
+        .receive{
+          background: #ff9d34;
+        }
+        .tofinish{
+          background: #eb6564;
+        }
+        .hasreceive{
+          background: #a3a3a3;
         }
       }
-      .progress {
-        span {
-          color: #8c694e;
-          font-size: 1.375rem /* 22/16 */;
-        }
+      &:nth-of-type(odd){
+        background:#f5f5f5;
+      }
+      &:last-of-type{
+        height: 3.375rem /* 54/16 */;
       }
     }
   }
-  .taskList{
-    background: yellow;
-    margin-top:2.125rem /* 34/16 */;
-  }
-}
 </style>

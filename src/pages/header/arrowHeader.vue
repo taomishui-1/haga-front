@@ -29,8 +29,10 @@ export default {
             
         }
     },
+    beforeCreate(){
+        console.log('beforeCreate')
+    },
     created(){
-        console.log("created")
         this.name=this.$route.name
     },
     mounted(){
@@ -58,12 +60,13 @@ export default {
     align-items: center;
     justify-content: space-between;
     padding:0 2.8125rem /* 45/16 */;
-    border-bottom:1px solid #ccc;
+    // border-bottom:1px solid #ccc;
     .arrow{
-        width:1.6875rem /* 27/16 */;
+        width:1.4rem /* 27/16 */;
         
         img{
             width: 100%;
+            height: auto;
         }
     }
     .name{
