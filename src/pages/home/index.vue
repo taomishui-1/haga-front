@@ -52,6 +52,8 @@
         <img src="@/assets/images/home/recharge.png" alt="" class="img swing">
         <img src="@/assets/images/home/spot.png" alt="" class="spot">
       </div>
+      <Modal @confirm="confirm" :data='modalList' :visible="visible">
+      </Modal>
   </div>
 </template>
 
@@ -62,13 +64,14 @@ import Cookies from 'js-cookie'
 import Swiper from 'swiper'
 import Active from './active.vue'
 import Games from './games.vue'
-// import AmountHeader from '@/pages/header/amountHeader.vue'
-
+import Modal from '@/components/modal.vue'
+import $jq from 'jquery'
 
 export default {
   components: {
     Active,
     Games,
+    Modal
     // AmountHeader
   },
   data() {
@@ -77,6 +80,7 @@ export default {
         user: "",
         password: ""
       },
+      visible:true,
       imgList:[
         {
           imgSrc:require('@/assets/images/home/banner01.png'),
@@ -97,7 +101,19 @@ export default {
           btnSrc:require('@/assets/images/home/banner04_btn.png'),
         },
       ],
-      messageList:[1,2,3,4,5,6,7,8,9,10,1,1]
+      messageList:[1,2,3,4,5,6,7,8,9,10,1,1],
+      messageLeft:0,
+      modalList:[
+        {
+          imageUrl:require('@/assets/images/common/redpicket.png'),
+          value:'2元'
+        },
+        {
+          imageUrl:require('@/assets/images/common/value.png'),
+          value:'2000'
+        },
+      ],
+
     };
   },
   methods: {
@@ -128,9 +144,17 @@ export default {
     },
     getBannerClass(index){
       return 'banner'+(index+1)
+    },
+    confirm(){
+      this.visible=true
+      this.$toast('这里是一个toast提示')
     }
   },
   created(){
+    messagePlay
+    var messagePlay=setInterval(function(){},100)
+    console.log($jq('.messageList').width(),parseInt($jq('.messageList').css('left')))
+    // this.messageLeft=
     // $('.messageList').animate({
     //   left:''
     // },1000)

@@ -1,27 +1,19 @@
 import Vue from 'vue'
-// import Button from 'ant-design-vue/lib/button';
-// import 'ant-design-vue/dist/antd.css';
-import { Button,FormModel,Input,Icon,Form} from 'ant-design-vue';
 import 'swiper/css/swiper.min.css';
 // import 'animate.css/animate.min.css';
 import "@/styles/animate.css";
-// import 'ant-design-vue/lib/button/style';
 // import 'lib-flexible/flexible';
 import filters from './filters/index'
 import router from './router'
 import VueWechatTitle from 'vue-wechat-title'
+import Toast from '@/components/toast'
 
 // import $ from 'jquery'
 import App from './App';
 
 // Vue.use(require('vue-wechat-title'))
 Vue.use(VueWechatTitle)
-
-Vue.component(Button.name, Button)
-Vue.component(FormModel.name,FormModel)
-Vue.component(Input.name,Input)
-Vue.component(Icon.name,Icon)
-Vue.component(Form.name,Form)
+Vue.use(Toast)
 // Vue.component(Message.name,Message)
 
 

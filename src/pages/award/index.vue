@@ -169,14 +169,20 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    // background: yellow;
     li{
-      width:19.1875rem /* 307/16 */;
+      // width:19.1875rem /* 307/16 */;
+      flex: 1;
       height: 20.8125rem /* 333/16 */;
       background:#f7f7f7;
       border-radius: 1.3125rem /* 21/16 */;
       margin-bottom:1.875rem /* 30/16 */;
       padding:1.875rem /* 30/16 */ .9375rem /* 15/16 */ 0;
       text-align: left;
+      box-sizing: border-box;
+      &:nth-of-type(odd){
+        margin-right: 2.5rem /* 40/16 */;
+      }
       .imgWrap{
         height: 8.5rem /* 136/16 */;
         margin-bottom:2.1rem /* 40/16 */;

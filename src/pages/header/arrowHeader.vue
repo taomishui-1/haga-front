@@ -54,16 +54,15 @@ export default {
 <style lang="less" scoped>
 @import '~@/styles/main.less';
 .arrowHeader{
-    height:7rem /* 112/16 */;
+    height:6rem /* 112/16 */;
     background: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding:0 2.8125rem /* 45/16 */;
-    // border-bottom:1px solid #ccc;
+    border-bottom:1px solid #ccc;
     .arrow{
-        width:1.4rem /* 27/16 */;
-        
+        width:1.2rem /* 27/16 */;
         img{
             width: 100%;
             height: auto;
@@ -74,6 +73,7 @@ export default {
         p{
             font-size: 2rem /* 32/16 */;
             line-height: 7rem /* 112/16 */;
+            font-weight: 900;
         }
     }
 }

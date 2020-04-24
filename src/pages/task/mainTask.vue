@@ -52,9 +52,10 @@
           </li>
         </ul>
       </div>
+      <!-- 五福临门 -->
       <div class="game">
-        <h3 class="title">快乐连消</h3>
-        <ul class="taskList" id="lianxiao">
+        <h3 class="title">五福临门</h3>
+        <ul class="taskList" id="wufu">
           <li v-for="(item,index) of gameTaskList" :key="index">
             <img src="@/assets/images/task/game-wufu.png" alt class="gameImg" />
             <div class="content">
@@ -76,9 +77,10 @@
           </li>
         </ul>
       </div>
+      <!-- 弹跳达人 -->
       <div class="game">
-        <h3 class="title">梦想桌球</h3>
-        <ul class="taskList" id="zhuoqiu">
+        <h3 class="title">弹跳达人</h3>
+        <ul class="taskList" id="tantiao">
           <li v-for="(item,index) of gameTaskList" :key="index">
             <img src="@/assets/images/task/game-tantiao.png" alt class="gameImg" />
             <div class="content">
@@ -186,12 +188,12 @@ export default {
     font-weight: 900;
     text-align: left;
     margin-top: 1.875rem /* 30/16 */;
+    margin-bottom: 1.625rem /* 26/16 */;
   }
   h3{
     font-size: 1.6875rem /* 27/16 */;
     color: #5a5959;
     text-align: left;
-    margin-top:1.625rem /* 26/16 */;
     margin-bottom:0.5rem;
   }
   .game{
@@ -210,21 +212,36 @@ export default {
     }
   }
   #lianxiao{
-    background: url('~@/assets/images/task/game01-bg.png') no-repeat center;
+    background: url('~@/assets/images/task/game-lianxiao-bg.png') no-repeat center;
     background-size: cover;
     .gameProgress{
       background:#7e59f3;
     }
   }
   #zhuoqiu{
-    background: url('~@/assets/images/task/game02-bg.png') no-repeat center;
+    background: url('~@/assets/images/task/game-zhuoqiu-bg.png') no-repeat center;
     background-size: cover;
     .gameProgress{
       background:#556fdc;
     }
   }
+  #wufu{
+    background: url('~@/assets/images/task/game-wufu-bg.png') no-repeat center;
+    background-size: cover;
+    .gameProgress{
+      background:#A1654A;
+    }
+  }
+  #tantiao{
+    background: url('~@/assets/images/task/game-tantiao-bg.png') no-repeat center;
+    background-size: cover;
+    .gameProgress{
+      background:#53886E;
+    }
+  }
   .taskList{
     margin-top:0;
+    border-radius: 1.25rem /* 20/16 */;
     li{
       height: 6rem /* 96/16 */;
     }

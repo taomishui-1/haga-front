@@ -96,7 +96,7 @@ const routes=[
         name:'商城',
         iconName:'store',
         components:{
-            default:()=>import('@/pages/home/active/store.vue'),
+            default:()=>import('@/pages/store/store.vue'),
             header:()=>import('@/pages/header/arrowHeader.vue'),
             
         },

@@ -65,6 +65,7 @@ html,body{
     // top:0;
     // left:0;
     padding:0 2rem /* 32/16 */;
+    margin-top:.8rem;
 }
 }
 </style>

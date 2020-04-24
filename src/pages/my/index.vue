@@ -2,7 +2,7 @@
   <div id="my">
     <div class="top clearfix">
       <div class="avatar">
-        <img src="@/assets/images/my/avatar01.png" alt class="img" />
+        <img src="@/assets/images/common/avatar01.png" alt class="img" />
         <div class="right">
           <p class="name">内马尔的YKO</p>
           <div class="level">
@@ -103,7 +103,11 @@ export default {
   },
   created() {
     $jq(".name p").text(this.$route.name);
+    $jq('.arrowHeader').css({
+      // 'border-bottom':0
+    })
   },
+  mounted(){},
   methods:{
     goPage(path,index){
       console.log(index)

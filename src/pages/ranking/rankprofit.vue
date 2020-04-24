@@ -35,18 +35,57 @@
           </div>
           <div class="oldRanking">
             <p>上期榜单</p>
-            <img src="" alt="" class="arrow">
+            <img src="@/assets/images/rank/arrow-right.png" alt="" class="arrow">
           </div>
         </div>
-        <div class="topthree"></div>
-        <div class="rankList"></div>
+        <div class="topthree">
+          <dl class="second rankitem">
+            <dt>
+              <div class="imgWrap">
+                <img src="@/assets/images/rank/rank-second.png" alt="" class="imgBorder">
+                <img src="@/assets/images/common/avatar01.png" alt="" class="image">
+              </div>
+            </dt>
+            <dd>带明星</dd>
+            <dd>1235000</dd>
+            <dd>780元礼包</dd>
+          </dl>
+          <dl class="first rankitem">
+            <dt>
+              <div class="imgWrap">
+                <img src="@/assets/images/rank/rank-first.png" alt="" class="imgBorder">
+                <img src="@/assets/images/common/avatar02.png" alt="" class="image">
+              </div>
+            </dt>
+            <dd>罗罗诺亚JKT</dd>
+            <dd>88800000</dd>
+            <dd>999元礼包</dd>
+          </dl>
+          <dl class="third rankitem">
+            <dt>
+              <div class="imgWrap">
+                <img src="@/assets/images/rank/rank-third.png" alt="" class="imgBorder">
+              <img src="@/assets/images/common/avatar03.png" alt="" class="image">
+              </div>
+            </dt>
+            <dd>带明星</dd>
+            <dd>5124563</dd>
+            <dd>780元礼包</dd>
+          </dl>
+        </div>
+        <div class="rankList">
+          <RankProfitList></RankProfitList>
+        </div>
       </div>
   </div>
 </template>
 
 <script>
-
+import RankProfitList from '@/pages/ranking/rankProfitList'
 export default {
+  components:{
+    RankProfitList
+  },
   name: 'App',
   data(){
     return{}

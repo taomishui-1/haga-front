@@ -127,6 +127,113 @@ export default {
 				}
 			}
 		}
+		// 本期榜单，
+		.title{
+			height: 1.875rem /* 30/16 */;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			h3{
+				font-size: 1.875rem /* 30/16 */;
+				margin-right:1rem;
+			}
+			.countdown{
+				flex: 1;
+				font-size: 1.25rem /* 20/16 */;
+				color:@main;
+				text-align: left;
+			}
+			.oldRanking{
+				font-size: 1.25rem /* 20/16 */;
+				color:#757575;
+				display: flex;
+				height: 100%;
+				align-items: center;
+				img{
+					width:.875rem /* 14/16 */;
+					height: auto;
+					margin-left:0.5rem;
+				}
+			}
+		}
+		// 前三名
+		.topthree{
+			display: flex;
+			justify-content: space-between;
+			height: 17rem /* 252/16 */;
+			margin-top: 2rem /* 32/16 */;
+			margin-top: 2.5rem /* 40/16 */;
+			dt{
+				// width:9.0625rem /* 145/16 */;
+				height: 10.4375rem /* 167/16 */;
+				.imgWrap{
+					// width:9.625rem /* 154/16 */;
+					height: 100%;
+					position: relative;
+					.imgBorder{
+						width:100%;
+						height: auto;
+						position: absolute;
+						bottom:0;
+						left:0;
+						z-index: 2;
+					}
+					.image{
+						// width: 100%;
+						height: auto;
+						position: absolute;
+						z-index: 1;
+					}
+				}
+				.imgBorder{}
+			}
+			dd{
+				color:#4e4e4e;
+				&:nth-of-type(1){
+					font-size: 1.375rem /* 22/16 */;
+					margin-top:1rem;
+				}
+				&:nth-of-type(2){
+					color: @main;
+					font-size: .875rem /* 14/16 */;
+					margin-top:.5rem;
+				}
+				&:nth-of-type(3){
+					font-size: 1.125rem /* 18/16 */;
+					margin-top:.5rem;
+				}
+			}
+		}
+		.second{
+			.imgWrap{
+				width:9.625rem /* 154/16 */;
+			}
+			.image{
+				width:6.4375rem /* 103/16 */;
+				bottom:1.9rem /* 36/16 */;
+				left:1.5rem /* 24/16 */;
+			}
+		}
+		.first{
+			.imgWrap{
+				width:9.0625rem /* 145/16 */;
+			}
+			.image{
+				width: 6.5625rem /* 105/16 */;
+				bottom:1.2rem /* 36/16 */;
+				left:1.5rem /* 24/16 */;
+			}
+		}
+		.third{
+			.imgWrap{
+				width: 9.0625rem /* 145/16 */;
+			}
+			.image{
+				width: 6rem /* 96/16 */;
+				bottom:1.9rem /* 36/16 */;
+				left:1.5rem /* 24/16 */;
+			}
+		}
 	}
 	#rankprofit{
 			.top{
@@ -140,5 +247,61 @@ export default {
 				background-size: contain;
 			}
 		}
+	.rankList{
+		margin:2rem 0 12rem;
+		table{
+			background: #f7f7f7;
+			border:0;
+			width:100%;
+			border-radius: 1.875rem /* 30/16 */;
+			tr{
+				height: 4.6875rem /* 75/16 */;
+				border:0;
+				font-size: 1.25rem /* 20/16 */;
+				&:nth-of-type(even){
+					background: #fff;
+				}
+				&:last-of-type{
+					height: 3.125rem /* 50/16 */;
+				}
+				th{
+					border:0;
+					color: #4e4e4e;
+				}
+				td{
+					border:0;
+					&:nth-of-type(1){
+						color: #343434;
+					}
+					&:nth-of-type(2){
+						color: #343434;
+					}
+					&:nth-of-type(3){
+						color: #636363;
+					}
+					&:nth-of-type(4){
+						color: #636363;
+					}
+				}
+				.name{
+					height: 4.6875rem /* 75/16 */;
+					overflow: hidden;
+					img{
+						width: 2.375rem /* 38/16 */;
+						height: 2.375rem /* 38/16 */;
+						margin-right: 1rem /* 16/16 */;
+						float: left;
+						border-radius: 50%;
+					}
+					p{
+						text-align: left;
+						height: 2.375rem /* 38/16 */;
+						line-height: 2.375rem /* 38/16 */;
+					}
+				}
+			}
+			
+		}
+	}
 }
 </style>
