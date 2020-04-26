@@ -43,7 +43,7 @@
     <Active/>
     <Games/>
     <!-- 活动中心 -->
-      <div class="activecenter ">
+      <div class="activecenter " @click="clickActiveCenter">
         <img src="@/assets/images/home/activecenter.png" alt="" class="img">
         <img src="@/assets/images/home/spot.png" alt="" class="spot">       
       </div>
@@ -54,6 +54,7 @@
       </div>
       <Modal @confirm="confirm" :data='modalList' :visible="visible">
       </Modal>
+      <Side v-show="SideShow" @childFn='parentFn'></Side>
   </div>
 </template>
 
@@ -66,12 +67,14 @@ import Active from './active.vue'
 import Games from './games.vue'
 import Modal from '@/components/modal.vue'
 import $jq from 'jquery'
+import Side from '@/pages/side/side.vue'
 
 export default {
   components: {
     Active,
     Games,
-    Modal
+    Modal,
+    Side
     // AmountHeader
   },
   data() {
@@ -113,6 +116,7 @@ export default {
           value:'2000'
         },
       ],
+      SideShow:false
 
     };
   },
@@ -148,6 +152,12 @@ export default {
     confirm(){
       this.visible=true
       this.$toast('这里是一个toast提示')
+    },
+    clickActiveCenter(){
+      this.SideShow=true
+    },
+    parentFn(sideShow){
+      this.SideShow=sideShow
     }
   },
   created(){

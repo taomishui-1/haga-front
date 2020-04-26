@@ -114,6 +114,7 @@ export default {
       position: absolute;
       bottom: 2rem;
       text-align: left;
+      box-sizing: border-box;
       .title {
         text-align: left;
         span {

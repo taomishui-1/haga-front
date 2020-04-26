@@ -36,116 +36,11 @@ export default {
 </script>
 
 <style lang="less">
+@import '~@/styles/common.less';
 #task {
   // padding: 0 1.75rem /* 28/16 */;
 }
 .header { 
   height: 3.125rem /* 50/16 */;
 }
-
-  .taskList {
-    margin-top: 2.125rem /* 34/16 */;
-    display: flex;
-    flex-direction: column;
-    width:100%;
-    li{
-      height: 5.75rem /* 92/16 */;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      .gameImg{
-        width: 3.875rem /* 62/16 */;
-        margin-left:.625rem /* 10/16 */;
-      }
-      .content{
-        height: 3.375rem /* 54/16 */;
-        margin-left:1.25rem /* 20/16 */;
-        text-align: left;
-        width:28.375rem /* 454/16 */;
-        .taskName{
-          font-size: 1.25rem /* 20/16 */;
-        }
-        .bottom{
-          display: flex;
-          height: 1.875rem /* 30/16 */;
-          .gameProgress{
-            width: 10rem /* 160/16 */;
-            height: 1.25rem /* 20/16 */;
-            margin-top:.5rem;
-            background: #dbdbdb;
-            position: relative;
-            border-radius: .625rem /* 10/16 */;
-            overflow: hidden;
-            .progress{
-              width:100%;
-              height: 100%;
-              border-radius: .625rem /* 10/16 */;
-              position: absolute;
-              top:0;
-              left:0;
-              background: #ffc168;
-              overflow: hidden;
-            }
-            .progressText{
-              position: absolute;
-              top:0;
-              left:0;
-              right:0;
-              bottom:0;
-              margin:auto;
-              color: #7e7e7e;
-              font-size: .75rem /* 12/16 */;
-              text-align: center;
-            }
-          }
-          .telcharge{
-            margin-left:1.625rem /* 26/16 */;
-            margin-top:0.25rem;
-            height: 1.875rem /* 30/16 */;
-            img{
-              width: 1.875rem /* 30/16 */;
-              height: auto;
-              margin-right: .3125rem /* 5/16 */;
-              float: left;
-            }
-            span{
-              font-size: 1rem;
-              height: 100%;
-              line-height: 1;
-              color: #ee6a23;
-            }
-          }
-        }
-      }
-      .button{
-        width:6.4375rem /* 103/16 */;
-        height: 2.375rem /* 38/16 */;
-        button{
-          width:100%;
-          height: 100%;
-          display: inline-block;
-          border-radius: .625rem /* 10/16 */;
-          text-align: center;
-          line-height: 1;
-          color:#fff;
-        }
-        .receive{
-          background: #ff9d34;
-        }
-        .tofinish{
-          background: #eb6564;
-        }
-        .hasreceive{
-          background: #a3a3a3;
-        }
-      }
-      &:nth-of-type(odd){
-        background:#f5f5f5;
-      }
-      &:last-of-type{
-        height: 3.375rem /* 54/16 */;
-      }
-    }
-  }
 </style>
