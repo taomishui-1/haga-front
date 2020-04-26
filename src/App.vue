@@ -20,14 +20,18 @@
 // import HelloWorld from './components/HelloWorld.vue'
 // import Home from './pages/home/index.vue'
 // import Footer from './pages/footer/index.vue'
-// import Header from './pages/header/index.vue'
+// import Login from './pages/user/login.vue'
 export default {
   name: 'App',
   components: {
-    // Home,
+    // Login,
     // Footer,
     // Header
   },
+  data(){
+    return {
+    }
+  }
 }
 </script>
 

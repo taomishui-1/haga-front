@@ -7,6 +7,7 @@ import filters from './filters/index'
 import router from './router'
 import VueWechatTitle from 'vue-wechat-title'
 import Toast from '@/components/toast'
+import store from './store'
 
 // import $ from 'jquery'
 import App from './App';
@@ -32,6 +33,10 @@ router.beforeEach((to, from, next) => {
   document.title = to.meta.title
   }
   next()
+  console.log("main.js-store",store.getters.getToken)
+  if(to.path.indexOf('/login')>-1){
+    console.log('goto login')
+  }
 })
 
 

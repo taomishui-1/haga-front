@@ -27,12 +27,14 @@ axios.interceptors.response.use(
     // 通用逻辑，请求出错，全屏弹层提示
     
     if (response&&response.data.errcode === 401) {
+      // token已过期或不存在
         console.log('未登陆，返回到login页面')
-        if(window.parent===window){
-            // router.push('/user/login');
-        }else{
-            // top.location.href = '#/user/login';
-        }
+        this.$router.push({path:'/login'})
+        // if(window.parent===window){
+        //     this.$router.go('/login');
+        // }else{
+        //     // top.location.href = '#/user/login';
+        // }
         
     }
     return response;
@@ -52,12 +54,12 @@ axios.interceptors.response.use(
 
 
 export default {
-  get(url, params = {}) {
-    params['t_'+new Date().getTime()]=Math.random()
-    return axios.get(url, {
-      params: params
-    })
-  },
+  // get(url, params = {}) {
+  //   params['t_'+new Date().getTime()]=Math.random()
+  //   return axios.get(url, {
+  //     params: params
+  //   })
+  // },
   post(url, params = {}) {
     console.log('url',url)
     var headersData = {

@@ -36,7 +36,7 @@
         </div>
       <div class="message">
         <div class="messageList">
-        <p v-for="(item,index) of messageList" :key="index">恭喜<span>无敌炫炫炫</span>在弹跳达人游戏中,获得 8000000 星钻..</p>
+        <p v-for="(item,index) of messageList" :key="index">{{index}}--恭喜<span>无敌炫炫炫</span>在弹跳达人游戏中,获得 8000000 星钻啦啦啦啦啦啦啦啦绿绿绿..</p>
       </div>
       </div>
     </div>
@@ -104,7 +104,7 @@ export default {
           btnSrc:require('@/assets/images/home/banner04_btn.png'),
         },
       ],
-      messageList:[1,2,3,4,5,6,7,8,9,10,1,1],
+      messageList:[1,2,3],
       messageLeft:0,
       modalList:[
         {
@@ -116,7 +116,8 @@ export default {
           value:'2000'
         },
       ],
-      SideShow:false
+      SideShow:false,
+      moveLeft:10
 
     };
   },
@@ -158,18 +159,16 @@ export default {
     },
     parentFn(sideShow){
       this.SideShow=sideShow
+    },
+    messageLeftFn(){
+      
     }
   },
   created(){
-    messagePlay
-    var messagePlay=setInterval(function(){},100)
-    console.log($jq('.messageList').width(),parseInt($jq('.messageList').css('left')))
-    // this.messageLeft=
-    // $('.messageList').animate({
-    //   left:''
-    // },1000)
+    
   },
   mounted(){
+    var _this=this;
     new Swiper('#swiper-container',{
       loop:'true',
       autoplay: {
@@ -180,11 +179,25 @@ export default {
         el: '.swiper-pagination',
       },
     })
-    // $('.activecenter .img').addClass('tada')
-    // setInterval(function(){
-    //   $('.recharge .img').addClass('swing')
-    // },1000)
-  }
+    
+      console.log('.....')
+      clearInterval(timer)
+      var timer=
+      setInterval(function(){
+        // 
+        if(Math.abs(parseInt($jq('.messageList').css('left')))<$jq('.messageList').width()){
+          $jq('.messageList').animate({
+            left:parseInt($jq('.messageList').css('left'))-_this.moveLeft
+          },10)
+        }else{
+          $jq('.messageList').css('left',0.5*$jq(window).width())
+        }
+      },100)
+    
+    
+
+  },
+  
 };
 </script>
 

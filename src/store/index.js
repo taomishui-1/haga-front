@@ -11,7 +11,12 @@ const store = new Vuex.Store({
     user,
     permission
   },
-  mutations: {}
+  mutations: {
+    increment(state,value){
+      state.count+=value
+    }
+  },
+  geeters:{},
 })
 
 export default store

@@ -18,7 +18,7 @@
     </div>
     <div class="myAssets">
       <dl>
-        <dt>我的星钻</dt>
+        <dt @click="getVal()">我的星钻</dt>
         <dd>2600800</dd>
       </dl>
       <img src="@/assets/images/my/solid.png" alt class="solid" />
@@ -53,6 +53,8 @@
 </template>
 
 <script>
+// import store from '@/store/index.js'
+import {Shop} from '@/api'
 // import Message from "@/pages/header/message.vue";
 import $jq from "jquery";
 export default {
@@ -107,14 +109,21 @@ export default {
       // 'border-bottom':0
     })
   },
-  mounted(){},
+  mounted(){
+    // console.log("store",store,store.state.count)
+    // console.log(">?",this.$store.state.count)
+    console.log('Shop',Shop)
+    Shop.list().then(res=>{
+      console.log("res",res)
+    })
+  },
   methods:{
     goPage(path,index){
       console.log(index)
       if(path){
         this.$router.push(path)
       }
-    }
+    },
   }
 };
 </script>
@@ -123,25 +132,17 @@ export default {
 @import "~@/styles/main.less";
 #my {
   position: relative;
-  .message{
-      float:right;
-      height: 4.75rem /* 76/16 */;
-      width:2.5rem /* 40/16 */;
-      display: flex;
-      align-items: center;
-      img{
-          width:2.5rem /* 40/16 */;
-      }
-  }
   .top {
     width: 100%;
     height: 17.8125rem /* 285/16 */;
     background: url("~@/assets/images/my/top-bg.png") no-repeat center;
     background-size: cover;
-    padding: 2.25rem /* 36/16 */ 3.5rem /* 56/16 */ 0 1.875rem /* 30/16 */;
+    padding: 2.25rem /* 36/16 */ 1.875rem /* 30/16 */ 0 3.5rem /* 56/16 */;
+    box-sizing: border-box;
     .avatar {
       height: 5rem;
       display: flex;
+      width:100%;
       .img {
         width: 4.875rem /* 78/16 */;
         height: 4.875rem /* 78/16 */;
@@ -175,6 +176,16 @@ export default {
           }
         }
       }
+      .message{
+        // float:right;
+        height: 4.75rem /* 76/16 */;
+        width:2.5rem /* 40/16 */;
+        display: flex;
+        align-items: center;
+        img{
+            width:2.5rem /* 40/16 */;
+        }
+  }
     }
   }
   .myAssets {

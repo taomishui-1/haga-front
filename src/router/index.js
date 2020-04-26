@@ -8,6 +8,14 @@ Vue.use(Router)
 
 const routes=[
     {
+        path:'/login',
+        title:'登陆',
+        name:'登陆',
+        components:{
+            default:()=>import('@/pages/user/login.vue'),
+        }
+    },
+    {
         path:'/home',
         title:'游戏',
         name:'游戏',

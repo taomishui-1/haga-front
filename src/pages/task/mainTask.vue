@@ -7,7 +7,7 @@
         <h3 class="title">快乐连消</h3>
         <ul class="taskList" id="lianxiao">
           <li v-for="(item,index) of gameTaskList" :key="index">
-            <img src="@/assets/images/task/game-lianxiao.png" alt class="gameImg" />
+            <img src="@/assets/images/common/game-lianxiao.png" alt class="gameImg" />
             <div class="content">
               <span class="taskName">玩15局快乐连消</span>
               <div class="bottom">
@@ -32,7 +32,7 @@
         <h3 class="title">梦想桌球</h3>
         <ul class="taskList" id="zhuoqiu">
           <li v-for="(item,index) of gameTaskList" :key="index">
-            <img src="@/assets/images/task/game-zhuoqiu.png" alt class="gameImg" />
+            <img src="@/assets/images/common/game-zhuoqiu.png" alt class="gameImg" />
             <div class="content">
               <span class="taskName">玩15局快乐连消</span>
               <div class="bottom">
@@ -57,7 +57,7 @@
         <h3 class="title">五福临门</h3>
         <ul class="taskList" id="wufu">
           <li v-for="(item,index) of gameTaskList" :key="index">
-            <img src="@/assets/images/task/game-wufu.png" alt class="gameImg" />
+            <img src="@/assets/images/common/game-wufu.png" alt class="gameImg" />
             <div class="content">
               <span class="taskName">玩15局快乐连消</span>
               <div class="bottom">
@@ -82,7 +82,7 @@
         <h3 class="title">弹跳达人</h3>
         <ul class="taskList" id="tantiao">
           <li v-for="(item,index) of gameTaskList" :key="index">
-            <img src="@/assets/images/task/game-tantiao.png" alt class="gameImg" />
+            <img src="@/assets/images/common/game-tantiao.png" alt class="gameImg" />
             <div class="content">
               <span class="taskName">玩15局快乐连消</span>
               <div class="bottom">
