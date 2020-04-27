@@ -2,7 +2,7 @@
     <div class="amountWrap">
         <div class="amount">
             <img src="@/assets/icons/header/amount.png" alt="" class="icon">
-            <span>25800</span>
+            <span>{{amount}}</span>
             <img src="@/assets/icons/header/plus.png" alt="" class="plus">
         </div>
     </div>
@@ -11,7 +11,11 @@
 
 <script>
 export default {
-    
+    props:{
+        amount:{
+            type:String
+        }
+    }
 }
 </script>
 
@@ -19,7 +23,7 @@ export default {
 @import '~@/styles/main.less';
 .amountWrap{
     height:4.75rem /* 76/16 */;
-    margin-right:2.8125rem /* 45/16 */;
+    margin-right:2.5rem /* 45/16 */;
     margin-left:1.0625rem /* 17/16 */;
     display:flex;
     align-items:center;

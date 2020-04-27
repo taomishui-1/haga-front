@@ -22,7 +22,7 @@
               </div>
             </div>
             <div class="button">
-              <button class="receive">领取</button>
+              <button class="receiveMain">领取</button>
             </div>
           </li>
         </ul>
@@ -47,32 +47,7 @@
               </div>
             </div>
             <div class="button">
-              <button class="receive">领取</button>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <!-- 五福临门 -->
-      <div class="game">
-        <h3 class="title">五福临门</h3>
-        <ul class="taskList" id="wufu">
-          <li v-for="(item,index) of gameTaskList" :key="index">
-            <img src="@/assets/images/common/game-wufu.png" alt class="gameImg" />
-            <div class="content">
-              <span class="taskName">玩15局快乐连消</span>
-              <div class="bottom">
-                <div class="gameProgress">
-                  <div class="progress" style="width:75%"></div>
-                  <span class="progressText">1/4</span>
-                </div>
-                <div class="telcharge">
-                  <img src="@/assets/images/task/money.png" alt />
-                  <span>0.5元话费</span>
-                </div>
-              </div>
-            </div>
-            <div class="button">
-              <button class="receive">领取</button>
+              <button class="receiveMain">领取</button>
             </div>
           </li>
         </ul>
@@ -97,7 +72,32 @@
               </div>
             </div>
             <div class="button">
-              <button class="receive">领取</button>
+              <button class="receiveMain">领取</button>
+            </div>
+          </li>
+        </ul>
+      </div>      
+      <!-- 五福临门 -->
+      <div class="game">
+        <h3 class="title">五福临门</h3>
+        <ul class="taskList" id="wufu">
+          <li v-for="(item,index) of gameTaskList" :key="index">
+            <img src="@/assets/images/common/game-wufu.png" alt class="gameImg" />
+            <div class="content">
+              <span class="taskName">玩15局快乐连消</span>
+              <div class="bottom">
+                <div class="gameProgress">
+                  <div class="progress" style="width:75%"></div>
+                  <span class="progressText">1/4</span>
+                </div>
+                <div class="telcharge">
+                  <img src="@/assets/images/task/money.png" alt />
+                  <span>0.5元话费</span>
+                </div>
+              </div>
+            </div>
+            <div class="button">
+              <button class="receiveMain">领取</button>
             </div>
           </li>
         </ul>

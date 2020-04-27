@@ -51,7 +51,7 @@
             <dt>
               <img src="@/assets/images/store/week-bg.png" alt="" class="bg">
               <div class="countDown">
-                <p>特权倒计时 00:00:00</p>
+                <p>有效期至 2020.04.07</p>
               </div>
             </dt>
             <dd>购买立得+30000星钻</dd>
@@ -64,7 +64,7 @@
             <dt>
               <img src="@/assets/images/store/month-bg.png" alt="" class="bg">
               <div class="countDown">
-                <p>特权倒计时 00:00:00</p>
+                <p>有效期至 2020.04.07</p>
               </div>
             </dt>
             <dd>购买立得+30000星钻</dd>
@@ -240,14 +240,16 @@ export default {
             border-radius: .75rem /* 12/16 */;
             position: absolute;
             left:1.25rem /* 20/16 */;
-            bottom:1rem;
+            bottom:2rem;
             color: #fff;
+            // padding:0 1rem;
             p{
               font-size: .75rem /* 12/16 */;
               white-space: nowrap;
               line-height: 1.5rem /* 24/16 */;
-              transform: scale(.75);
-              margin-top:1px;
+              transform: scale(.7);
+              position: relative;
+              left:-1rem;
             }
           }
         }

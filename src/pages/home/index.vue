@@ -36,12 +36,12 @@
         </div>
       <div class="message">
         <div class="messageList">
-        <p v-for="(item,index) of messageList" :key="index">{{index}}--恭喜<span>无敌炫炫炫</span>在弹跳达人游戏中,获得 8000000 星钻啦啦啦啦啦啦啦啦绿绿绿..</p>
+        <p v-for="(item,index) of messageList" :key="index" v-html="item.msg"></p>
       </div>
       </div>
     </div>
     <Active/>
-    <Games/>
+    <Games :gameList="gameList" :gameRecommend="gameRecommend" />
     <!-- 活动中心 -->
       <div class="activecenter " @click="clickActiveCenter">
         <img src="@/assets/images/home/activecenter.png" alt="" class="img">
@@ -59,9 +59,8 @@
 </template>
 
 <script>
-import { User} from '@/api'
-import { Shop} from '@/api'
-import Cookies from 'js-cookie'
+import { Home,User} from '@/api'
+// import Cookies from 'js-cookie'
 import Swiper from 'swiper'
 import Active from './active.vue'
 import Games from './games.vue'
@@ -79,10 +78,9 @@ export default {
   },
   data() {
     return {
-      formInline: {
-        user: "",
-        password: ""
-      },
+      gameList:[],
+      gameRecommend:{},
+      UserInfo:{},
       visible:true,
       imgList:[
         {
@@ -104,7 +102,7 @@ export default {
           btnSrc:require('@/assets/images/home/banner04_btn.png'),
         },
       ],
-      messageList:[1,2,3],
+      messageList:[],
       messageLeft:0,
       modalList:[
         {
@@ -117,33 +115,12 @@ export default {
         },
       ],
       SideShow:false,
-      moveLeft:10
+      moveLeft:10,
+      messageTimer:null
 
     };
   },
   methods: {
-    handleSubmit() {
-      console.log(this.formInline.user, this.formInline.password);
-      // this.$message.success('This is a success message');
-      const params={
-        'username':this.formInline.user,
-        'password':this.formInline.password,
-        'type': "account"
-      }
-      User.login(params)
-        .then(res => {
-          console.log('res',res)
-          if(res.data.errmsg=='ok'){
-            Cookies.set('Token',res.data.data)
-            Shop.list().then(res=>{
-              console.log(res)
-            })
-          }
-        })
-        .then(() => {
-          this.loading = false;
-        });
-    },
     getBtnClass(index){
       return 'btn'+(index+1)
     },
@@ -162,13 +139,58 @@ export default {
     },
     messageLeftFn(){
       
+    },
+    setMessageTimer(){
+      var that=this
+      if(this.messageTimer==null){
+        console.log("000",Math.abs(parseInt($jq('.messageList').css('left'))),$jq('.messageList').width())
+        this.messageTimer=setInterval(function(){
+          that.moveLeft--
+          if(-that.moveLeft<$jq('.messageList').width()){
+            $jq('.messageList').animate({
+              left:that.moveLeft+'px'
+            },10)
+          }
+          else{
+            $jq('.messageList').css('left',0.5*$jq(window).width())
+            that.moveLeft=0
+          }
+        },10)
+      }
     }
   },
   created(){
-    
+    var that=this
+    // 游戏列表
+    Home.fetchGame().then(res=>{
+      if(res.data.errcode==200){
+        this.gameList=res.data.data
+        localStorage.setItem('GAMELIST',JSON.stringify(that.gameList))
+      }
+    })
+    // 推荐列表
+    Home.fetchRecommendGame().then(res=>{
+      this.gameRecommend=res.data.data[0]
+    })
+    // 消息推送列表
+    Home.fetchAnnounce().then(res=>{
+      // console.log('广播列表',res)
+      if(res.data.errcode==200){
+        this.messageList=res.data.data
+        // this.messageList=res.data.data.slice(1,3)
+      }
+    })
+    // 头部 用户信息
+    User.queryCurrent().then(res=>{
+      console.log("我的",res.data.data)
+      if(res.data.errcode==200){
+        this.UserInfo=res.data.data
+        localStorage.setItem('USER_INFO',JSON.stringify(res.data.data))
+      }
+    })
   },
   mounted(){
-    var _this=this;
+    // var _this=this;
     new Swiper('#swiper-container',{
       loop:'true',
       autoplay: {
@@ -180,23 +202,16 @@ export default {
       },
     })
     
-      console.log('.....')
-      clearInterval(timer)
-      var timer=
-      setInterval(function(){
-        // 
-        if(Math.abs(parseInt($jq('.messageList').css('left')))<$jq('.messageList').width()){
-          $jq('.messageList').animate({
-            left:parseInt($jq('.messageList').css('left'))-_this.moveLeft
-          },10)
-        }else{
-          $jq('.messageList').css('left',0.5*$jq(window).width())
-        }
-      },100)
-    
-    
-
+    clearInterval(this.messageTimer)
+    this.messageTimer=null
+    this.setMessageTimer()
   },
+  
+  destroyed:function(){
+    // 每次离开页面清除定时器
+    clearInterval(this.messageTimer)
+    this.messageTimer=null
+  }
   
 };
 </script>

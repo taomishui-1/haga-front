@@ -5,9 +5,9 @@
     </div>
     <div class="mainContent">
       <div class="top">
-        <h2 class="name">话费代充</h2>
+        <h2 class="name">{{detailData.title}}</h2>
         <p class="people">
-          <span>1234</span>
+          <span>{{detailData.soldNum}}</span>
           人已领取
         </p>
       </div>
@@ -15,21 +15,22 @@
         <div class="type item">
           <p class="title">规格</p>
           <div class="content">
-            <button class="checked">50元</button>
-            <button>100元</button>
+            <button :class="{'checked':index==current}" v-for="(item,index) of detailData.skus" :key="item.id" @click="checkedType(index,item.name,item.id)">{{item.name}}</button>
+            <!-- <button>100元</button> -->
           </div>
         </div>
         <div class="choose item">
           <p class="title">已选</p>
-          <p class="content">50元</p>
+          <p class="content">{{checkedItem}}</p>
         </div>
         <div class="num item">
           <p class="title">数量</p>
-          <p class="remark">(剩余库存充足)</p>
+          <p class="remark" v-if="detailData.stockNum === -1">(剩余库存充足)</p>
+          <p class="remark" v-else>({{detailData.stockNum}})</p>
           <div class="chooseNum">
-              <p class="sub icon">-</p>
-              <p class="number">10</p>
-              <p class="add icon">+</p>
+              <p class="sub icon" @click="subClick()">-</p>
+              <p class="number">{{num}}</p>
+              <p class="add icon" @click="addClick()">+</p>
             </div>
         </div>
         <div class="service item">
@@ -43,9 +44,9 @@
         </div>
       </div>
     </div>
-    <div class="confirm">
-      <h2><span>50.00元</span>话费换取</h2>
-      <h3>话费券余额：236.5</h3>
+    <div class="confirm" @click="goExchange()">
+      <h2><span>{{total}}元</span>话费换取</h2>
+      <h3>话费券余额：{{userInfo.billAmount}}</h3>
     </div>
   </div>
 </template>
@@ -53,9 +54,80 @@
 
 <script>
 import $jq from "jquery";
+import { Shop} from '@/api'
+import {transFragment} from '@/utils/trans'
 export default {
+  data(){
+    return {
+      detailData:{},
+      current:0,
+      checkedItem:'',
+      num:1,
+      total:'',
+      proId:'',
+      skuId:''
+    }
+  },
   created() {
     $jq(".name p").text(this.$route.name);
+    console.log(this.$route.query)
+    var param=this.$route.query
+    this.proId=this.$route.query.id
+    Shop.queryDetail(param).then(res=>{
+      console.log('商品',res)
+      if(res.data.errcode==200){
+        this.detailData=res.data.data
+        this.checkedItem=res.data.data.skus[this.current].name
+        this.skuId=res.data.data.skus[this.current].id
+        this.totalChange()
+      }
+    })
+    // 话费券余额
+    var userInfo=JSON.parse(localStorage.getItem('USER_INFO'))
+    // userInfo.billAmount=parseInt(userInfo.billAmount, 10) / 10
+    userInfo.billAmount=transFragment(userInfo.billAmount)
+    this.userInfo=userInfo
+  },
+  methods:{
+    //  {(item.price && (item.price * buyNum).toFixed(2)) || ''}
+    checkedType(index,item,skuId){
+      this.checkedItem=item
+      this.current=index
+      this.skuId=skuId
+      this.totalChange()
+    },
+    subClick(){
+      console.log("sub",this.num)
+      if(this.num>1){
+        this.num-=1
+      }
+      this.totalChange()
+    },
+    addClick(){
+      if(this.detailData.stockNum!==-1){
+          if(this.num<this.detailData.stockNum){
+          this.num+=1
+        }
+      }else{
+         this.num+=1
+      }
+      this.totalChange()
+      
+    },
+    totalChange(){
+      this.total=(this.detailData.skus[this.current].price*this.num).toFixed(2)
+    },
+    goExchange(){
+      let params={
+        goods:this.proId,
+        num:this.num,
+        sku:this.skuId
+      }
+      console.log("exchange",params)
+      // Shop.toExchange(params).then(res=>{
+      //   console.log("换取",res)
+      // })
+    }
   }
 };
 </script>

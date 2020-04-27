@@ -2,6 +2,7 @@ import axios from 'axios'
 import store from '../store'
 // import qs from 'qs'
 import Cookies from 'js-cookie'
+// import router from '@/router'
 
 // axios.defaults.timeout = 10000
 axios.defaults.baseURL = process.env.VUE_APP_API_ROOT
@@ -25,11 +26,10 @@ axios.interceptors.response.use(
   response => {
     //console.log('response' + JSON.stringify(response))
     // 通用逻辑，请求出错，全屏弹层提示
-    
     if (response&&response.data.errcode === 401) {
       // token已过期或不存在
         console.log('未登陆，返回到login页面')
-        this.$router.push({path:'/login'})
+        // router.push({ path: '/login' })
         // if(window.parent===window){
         //     this.$router.go('/login');
         // }else{

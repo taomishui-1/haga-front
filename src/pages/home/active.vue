@@ -11,7 +11,7 @@
         </router-link>
         <li>
             <img src="@/assets/images/home/redpacket.png" alt="" class="img">
-            <p>幸运转盘</p>
+            <p>幸运红包</p>
         </li>
         <li>
             <img src="@/assets/images/home/7day.png" alt="" class="img">
@@ -50,6 +50,7 @@ export default {
         p{
             font-size: .125rem /* 2/16 */;
             margin-top:.75rem /* 12/16 */;
+            font-weight: 900;
         }
         .icon{
             width: 4.6875rem /* 75/16 */;

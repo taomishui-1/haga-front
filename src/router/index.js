@@ -7,6 +7,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const routes=[
+    // mode: 'history',  //去掉url的#
     {
         path:'/login',
         title:'登陆',

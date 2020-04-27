@@ -79,6 +79,7 @@ export default {
 			align-items: center;
 			justify-content: space-between;
 			padding:0 3.625rem /* 58/16 */ 0 2.25rem /* 36/16 */;
+			box-sizing: border-box;
 			dl{
 				display: flex;
 				flex-direction: column;
@@ -133,6 +134,7 @@ export default {
 			display: flex;
 			justify-content: space-between;
 			align-items: flex-end;
+			padding:0 1.25rem /* 20/16 */;
 			h3{
 				font-size: 1.875rem /* 30/16 */;
 				margin-right:1rem;
@@ -163,6 +165,8 @@ export default {
 			height: 17rem /* 252/16 */;
 			margin-top: 2rem /* 32/16 */;
 			margin-top: 2.5rem /* 40/16 */;
+			padding:0 1.875rem /* 30/16 */;
+			box-sizing: border-box;
 			dt{
 				// width:9.0625rem /* 145/16 */;
 				height: 10.4375rem /* 167/16 */;
@@ -204,7 +208,7 @@ export default {
 				}
 			}
 		}
-		.second{
+		.first{
 			.imgWrap{
 				width:9.625rem /* 154/16 */;
 			}
@@ -214,7 +218,7 @@ export default {
 				left:1.5rem /* 24/16 */;
 			}
 		}
-		.first{
+		.second{
 			.imgWrap{
 				width:9.0625rem /* 145/16 */;
 			}
@@ -254,6 +258,7 @@ export default {
 			border:0;
 			width:100%;
 			border-radius: 1.875rem /* 30/16 */;
+			border-spacing: 0;
 			tr{
 				height: 4.6875rem /* 75/16 */;
 				border:0;
@@ -275,6 +280,10 @@ export default {
 					}
 					&:nth-of-type(2){
 						color: #343434;
+						// text-align: center;
+						display: flex;
+						justify-content: center;
+						align-items: center;
 					}
 					&:nth-of-type(3){
 						color: #636363;

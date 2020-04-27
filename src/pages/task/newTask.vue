@@ -6,39 +6,39 @@
       </div>
       <div class="taskprogress">
         <div class="title">
-          <span>完成全部 再得2元话费</span>
+          <span><span class="bolder">完成全部</span> 再得{{newTaskData.parentTask?newTaskData.parentTask.awardsName:''}}</span>
         </div>
         <div class="tar">
           <!-- <div class="tarBg">
               
           </div>-->
-          <div class="rate"></div>
+          <div class="rate" :style="{width:newTaskData.finishTask/newTaskData.totalTask*10000/100.00+'%'}"></div>
         </div>
         <div class="progress">
-          <span>1/6</span>
+          <span>{{newTaskData.finishTask}} / {{newTaskData.totalTask}}</span>
         </div>
       </div>
     </div>
     <div class="taskList">
-      <li v-for="(item,index) of taskList" :key="index">
-        <img :src="item.gameImg" alt class="gameImg" />
+      <li v-for="(item,index) of newTaskData.subTask" :key="index">
+        <img :src="item.icon" alt class="gameImg" />
         <div class="content">
-          <span class="taskName">{{item.taskName}}</span>
+          <span class="taskName">{{item.name}}</span>
           <div class="bottom">
             <div class="gameProgress">
-              <div class="progress" :style="{width:item.pro}"></div>
-              <span class="progressText">1/4</span>
+              <div class="progress" :style="{width:item.proWidth}"></div>
+              <span class="progressText">{{item.finishNum}}/{{item.opsNum}}</span>
             </div>
             <div class="telcharge">
-              <img src="@/assets/images/task/money.png" alt />
-              <span>0.5元话费</span>
+              <img :src="item.awardsIcon" alt />
+              <span>{{item.awardsName}}</span>
             </div>
           </div>
         </div>
         <div class="button">
-          <button class="receive" v-if="item.status==1">领取</button>
-          <button class="tofinish" v-else-if="item.status==2">去完成</button>
-          <button class="hasreceive" v-else-if="item.status==3">已领取</button>
+          <button class="receive" v-if="item.taskState===1||item.taskState===3">领取</button>
+          <button class="tofinish" v-else-if="item.taskState===1||item.taskState===2">去完成</button>
+          <button class="hasreceive" v-else-if="item.taskState===4">已领取</button>
         </div>
       </li>
       <li></li>
@@ -49,47 +49,19 @@
 <script>
 export default {
   components: {},
+  props:{
+    newTaskData:Object
+  },
   data() {
     return {
       taskList: [
-        {
-          gameImg: require("@/assets/images/task/game01.png"),
-          taskName: "玩15局连消",
-          status: 1,
-          pro:'0%'
-        },
-        {
-          gameImg: require("@/assets/images/task/game01.png"),
-          taskName: "玩15局连消",
-          status: 1,
-          pro:'25%'
-        },
-        {
-          gameImg: require("@/assets/images/task/game02.png"),
-          taskName: "玩15局连消",
-          status: 2,
-          pro:'25%'
-        },
-        {
-          gameImg: require("@/assets/images/task/game02.png"),
-          taskName: "玩15局连消",
-          status: 2,
-          pro:'50%'
-        },
-        {
-          gameImg: require("@/assets/images/task/game02.png"),
-          taskName: "玩15局连消",
-          status: 2,
-          pro:'75%'
-        },
-        {
-          gameImg: require("@/assets/images/task/game01.png"),
-          taskName: "玩15局连消",
-          status: 3,
-          pro:'100%'
-        }
       ]
     };
+  },
+  mounted(){
+    console.log("新人模块",this.newTaskData)
+    // const finishNum = item.finishNum > item.opsNum ? item.opsNum : item.finishNum;
+    // {(finishNum / item.opsNum) * 100}%` }}
   }
 };
 </script>
@@ -121,6 +93,9 @@ export default {
           color: #c19673;
           font-size: 1.375rem /* 22/16 */;
         }
+        .bolder{
+          font-weight: 900;
+        }
       }
       .tar {
         height: 1.5rem /* 24/16 */;
@@ -131,7 +106,7 @@ export default {
         margin: 1.25rem /* 20/16 */ 0;
         overflow: hidden;
         .rate {
-          width: 18%;
+          // width: 18%;
           height: 100%;
           border-radius: 0.75rem /* 12/16 */;
           background: #f98532;

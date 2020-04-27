@@ -4,14 +4,14 @@
     <form action="">
       <input type="text" placeholder="请输入账号" class="userneme" v-model="username" >
       <input type="text" placeholder="请输入密码" class="password" v-model="password" >
-      <button @click="confirm()">登陆</button>
+      <button @click.prevent="confirm()">登陆</button>
     </form>
   </div>
 </template>
 
 <script>
 import { User} from '@/api'
-// import Cookies from 'js-cookie'
+import Cookies from 'js-cookie'
   export default {
     data(){
       return {
@@ -31,9 +31,10 @@ import { User} from '@/api'
           .then(res => {
             console.log('res',res)
             if(res.data.errmsg=='ok'){
-              // Cookies.set('Token',res.data.data)
-              localStorage.setItem('Token',res.data.data)
-              localStorage.setItem('isLogin',true)
+              Cookies.set('Token',res.data.data)
+              // localStorage.setItem('Token',res.data.data)
+              // localStorage.setItem('isLogin',true)
+              this.$router.push({path: '/home'})
             }
           })
           .then(() => {

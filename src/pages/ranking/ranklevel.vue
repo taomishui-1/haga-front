@@ -6,14 +6,14 @@
             <img src="@/assets/images/rank/icon-rank.png" alt="" class="img">
             <p>我的排名</p>
           </dt>
-          <dd>1</dd>
+          <dd>{{meInfo.rankNo}}</dd>
         </dl>
         <dl>
           <dt>
             <img src="@/assets/images/rank/icon-level.png" alt="" class="img">
             <p>当前等级</p>
           </dt>
-          <dd>50.01</dd>
+          <dd>{{meInfo.level}}</dd>
         </dl>
         <dl>
           <dt>
@@ -21,7 +21,8 @@
             <p>我的奖励</p>
             <img src="@/assets/images/rank/icon-qua.png" alt="" class="icon">
           </dt>
-          <dd class="null">暂无奖励</dd>
+          <dd v-if="meInfo.prizeName">{{meInfo.prizeName}}</dd>
+          <dd class="null" v-else>暂无奖励</dd>
         </dl>
       </div>
       <div class="time">
@@ -43,38 +44,38 @@
             <dt>
               <div class="imgWrap">
                 <img src="@/assets/images/rank/rank-second.png" alt="" class="imgBorder">
-                <img src="@/assets/images/common/avatar01.png" alt="" class="image">
+                <img :src="top3[1].avatar?top3[1].avatar:''" alt="" class="image">
               </div>
             </dt>
-            <dd>带明星</dd>
-            <dd>Lv.49.9</dd>
-            <dd>780元礼包</dd>
+            <dd>{{top3[1].nickname}}</dd>
+            <dd>Lv.{{top3[1].level}}</dd>
+            <dd>{{top3[1].prizeName}}</dd>
           </dl>
           <dl class="first rankitem">
             <dt>
               <div class="imgWrap">
                 <img src="@/assets/images/rank/rank-first.png" alt="" class="imgBorder">
-                <img src="@/assets/images/common/avatar02.png" alt="" class="image">
+                <img :src="top3[0].avatar?top3[0].avatar:''" alt="" class="image">
               </div>
             </dt>
-            <dd>罗罗诺亚JKT</dd>
-            <dd>Lv.50.01</dd>
-            <dd>999元礼包</dd>
+            <dd>{{top3[0].nickname}}</dd>
+            <dd>Lv.{{top3[0].level}}</dd>
+            <dd>{{top3[0].prizeName}}</dd>
           </dl>
           <dl class="third rankitem">
             <dt>
               <div class="imgWrap">
                 <img src="@/assets/images/rank/rank-third.png" alt="" class="imgBorder">
-              <img src="@/assets/images/common/avatar03.png" alt="" class="image">
+              <img :src="top3[2].avatar?top3[2].avatar:''" alt="" class="image">
               </div>
             </dt>
-            <dd>带明星</dd>
-            <dd>Lv.49.9</dd>
-            <dd>780元礼包</dd>
+            <dd>{{top3[2].nickname}}</dd>
+            <dd>Lv.{{top3[2].level}}</dd>
+            <dd>{{top3[2].prizeName}}</dd>
           </dl>
         </div>
         <div class="rankList">
-          <RankLevelList></RankLevelList>
+          <RankLevelList :bottom3="bottom3" :list="list"></RankLevelList>
         </div>
       </div>
   </div>
@@ -82,15 +83,40 @@
 
 <script>
 import RankLevelList from '@/pages/ranking/rankLevelList'
+import {Level} from '@/api'
 export default {
   components:{
     RankLevelList
   },
   name: 'App',
   data(){
-    return{}
+    return{
+      page:1,
+      pageSize:3,
+      bottom3:[],
+      top3:[],
+      meInfo:{}
+    }
   },
   created(){
+    // 
+    var params={
+      page:this.page,
+      pageSize:this.pageSize
+    }
+    Level.fetchCurrent(params).then(res=>{
+      console.log(res,"rank")
+      if(res.data.errcode==200){
+        this.meInfo=res.data.data.me
+        this.bottom3=res.data.data.bottom3
+        this.top3=res.data.data.top3
+        this.list=res.data.data.list
+      }
+    })
+    // 等级规则：
+    Level.fetchRules().then(res=>{
+      console.log('data--',res)
+    })
   }
 
 }

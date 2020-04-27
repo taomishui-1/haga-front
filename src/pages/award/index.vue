@@ -23,13 +23,13 @@
             </div>
             <div class="title">
               <h3>{{itm.title}}</h3>
-              <h4>飞速审核</h4>
+              <h4>{{itm.sellPoint}}</h4>
             </div>
             <div class="bottom">
               <div class="price">
-                <p><span>50</span>元话费券</p>
+                <p><span>{{itm.spuPrice}}</span>元话费券</p>
               </div>
-              <router-link class="exchange" tag="button" to="/award/detail">换取</router-link>
+              <router-link class="exchange" tag="button" :to="{path:'/award/detail',query:{id:itm.id}}">换取</router-link>
             </div>
           </li>
         </ul>
@@ -39,6 +39,7 @@
 
 <script>
 import $jq from 'jquery'
+import { Shop} from '@/api'
 export default {
   name: 'App',
   data(){
@@ -47,24 +48,6 @@ export default {
       awardList:[
         {
           name:'热门推荐',
-          items:[
-            {
-              picture: "static/shop/2019/shop/hf2.png",
-              title:'话费代充'
-            
-            },
-            {
-            picture: "static/shop/2019/shop/hf2.png",
-            title:'腾讯视频会员'
-            },
-            {
-              picture: "static/shop/2019/shop/huaweiMATE305G.png",
-              title: "华为MATE30 5G",
-            },{
-              picture:'static/shop/jd.png',
-              title:'京东E卡'
-            }
-          ]
         },
         {
           name:'虚拟卡券'
@@ -80,6 +63,11 @@ export default {
   },
   created(){
     $jq('.name p').text(this.$route.name)
+    Shop.queryFeedList().then(res=>{
+      if(res.data.errcode==200){
+        this.awardList=res.data.data
+      }
+    })
   },
   methods:{
     awardType(index){
@@ -157,6 +145,7 @@ export default {
         span{
           font-size: 2.125rem /* 34/16 */;
           color: #000;
+          font-weight: 900;
         }
       }
       .solid{

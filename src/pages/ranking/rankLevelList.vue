@@ -7,19 +7,19 @@
         <th>等级</th>
         <th>奖励</th>
       </tr>
-      <tr v-for="(item,index) of List1" :key="index+10">
-        <td>4</td>
+      <tr v-for="(item) of list" :key="item.id">
+        <td>{{item.rankNo}}</td>
         <td class="name">
-          <img src="@/assets/images/common/avatar06.png" alt="">
-          <p>JK0123345</p>
+          <img :src="item.avatar" alt="">
+          <p>{{item.nickname}}</p>
         </td>
-        <td>Lv.48</td>
-        <td>640元礼包</td>
+        <td>Lv.{{item.level}}</td>
+        <td>{{item.prizeName?item.prizeName:'——'}}</td>
       </tr>
       <tr v-if="!flag" @click="lookAllList()">
         <td colspan="4">点击打开完整榜单</td>
       </tr>
-      <tr v-for="(item,index) of List2" :key="index+100" v-else>
+      <tr v-for="(item,index) of List3" :key="index+1000"  v-else>
         <td>4</td>
         <td class="name">
           <img src="@/assets/images/common/avatar06.png" alt="">
@@ -28,14 +28,14 @@
         <td>Lv.48</td>
         <td>640元礼包</td>
       </tr>
-      <tr v-for="(item,index) of List3" :key="index+1000">
-        <td>4</td>
+      <tr v-for="(item) of bottom3" :key="item.id">
+        <td>{{item.rankNo}}</td>
         <td class="name">
-          <img src="@/assets/images/common/avatar06.png" alt="">
-          <p>JK0123345</p>
+          <img :src="item.avatar" alt="">
+          <p>{{item.nickname}}</p>
         </td>
-        <td>Lv.48</td>
-        <td>640元礼包</td>
+        <td>Lv.{{item.level}}</td>
+        <td>{{item.prizeName?item.prizeName:'——'}}</td>
       </tr>
       <tr v-show="lastTrShow"></tr>
     </table>
@@ -50,6 +50,14 @@ import $jq from 'jquery'
 
 export default {
   name: 'App',
+  props:{
+    list:{
+      type:Array
+    },
+    bottom3:{
+      type:Array
+    }
+  },
   data(){
     return{
       List1:[1,2,3],

@@ -32,7 +32,7 @@
         <div class="content">
           <div class="tabbarWrap">
             <div :class="{'name':true,'current':current==index}" v-for="(item,index) of tabbar" :key="index" @click="switchTab(index)">
-                <img :src="item.imgUrl" alt="">
+                <img :src="current==index?item.imgUrlCurrent:item.imgUrl" alt="">
               </div>
             <!-- <div class="name current">
                 <img src="@/assets/images/side/icon-active-current.png" alt="">
@@ -207,7 +207,7 @@ export default {
         width:89%;
         background: #fbf2e0;
         margin: 8.125rem /* 130/16 */ auto 3.75rem /* 60/16 */;
-        border-radius: 2.625rem /* 42/16 */;
+        border-radius: 2.625rem /* 42/16 */ 2.625rem /* 42/16 */ 2.625rem /* 42/16 */ 6.375rem /* 102/16 */;
         box-shadow: 1px 1px 8px 5px rgba(0, 0, 0, .3);
         position: relative;
         // overflow: hidden;
@@ -247,7 +247,7 @@ export default {
         .main{
           width:100%;
           height: 100%;
-          border-radius: 2.625rem /* 42/16 */;
+          border-radius: 2.625rem /* 42/16 */ 2.625rem /* 42/16 */ 2.625rem /* 42/16 */ 6.375rem /* 102/16 */;
           overflow: hidden;
           position: relative;
           .sideTaskWrap{

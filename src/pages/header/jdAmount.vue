@@ -2,7 +2,7 @@
     <div class="amountWrap">
         <div class="amount">
             <img src="@/assets/icons/header/redpacket.png" alt="" class="icon">
-            <span>25</span>
+            <span>{{jdAmount}}</span>
             <img src="@/assets/icons/header/plus.png" alt="" class="plus">
         </div>
     </div>
@@ -11,7 +11,11 @@
 
 <script>
 export default {
-    
+    props:{
+        jdAmount:{
+            type:String
+        }
+    }
 }
 </script>
 
@@ -19,7 +23,7 @@ export default {
 @import '~@/styles/main.less';
 .amountWrap{
     height:4.75rem /* 76/16 */;
-    margin-right:6.4375rem /* 103/16 */;
+    // margin-right:6.4375rem /* 103/16 */;
     margin-left:1.0625rem /* 17/16 */;
     display:flex;
     align-items:center;

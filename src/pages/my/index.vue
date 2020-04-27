@@ -19,17 +19,17 @@
     <div class="myAssets">
       <dl>
         <dt @click="getVal()">我的星钻</dt>
-        <dd>2600800</dd>
+        <dd>{{userInfo.amount}}</dd>
       </dl>
       <img src="@/assets/images/my/solid.png" alt class="solid" />
       <dl>
         <dt>我的话费券</dt>
-        <dd>76</dd>
+        <dd>{{userInfo.billAmount}}</dd>
       </dl>
       <img src="@/assets/images/my/solid.png" alt class="solid" />
       <dl>
         <dt>我的京东卡</dt>
-        <dd>100</dd>
+        <dd>{{userInfo.jdAmount}}</dd>
       </dl>
     </div>
     <ul class="active">
@@ -57,6 +57,7 @@
 import {Shop} from '@/api'
 // import Message from "@/pages/header/message.vue";
 import $jq from "jquery";
+import {transFragment,transMoney} from '@/utils/trans'
 export default {
   components: {
     // Message
@@ -64,6 +65,7 @@ export default {
   name: "App",
   data() {
     return {
+      userInfo:{},
       activList:[
         {
           name:'特惠礼包',
@@ -108,6 +110,12 @@ export default {
     $jq('.arrowHeader').css({
       // 'border-bottom':0
     })
+    // transMoney
+    var userInfo=JSON.parse(localStorage.getItem('USER_INFO'))
+    userInfo.amount=transMoney(userInfo.amount)
+    userInfo.billAmount=transFragment(userInfo.billAmount)
+    userInfo.jdAmount=transFragment(userInfo.jdAmount)
+    this.userInfo=userInfo
   },
   mounted(){
     // console.log("store",store,store.state.count)

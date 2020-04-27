@@ -1,11 +1,11 @@
 <template>
     <div class="games">
         <div class="recomment">
-            <img src="@/assets/images/home/game_recom.png" alt="">
+            <img :src="gameRecommend.icon" alt="">
         </div>
         <div class="gamesList">
-            <div class="game_item" v-for="(item,index) of list" :key="index">
-                <img :src="item.imgUrl" alt="">
+            <div class="game_item" v-for="(item,index) of gameList" :key="item.id">
+                <img :src="item.icon" alt="">
                 <span>{{item.num}}人在玩</span>
                 <img src="@/assets/images/home/jackpot.png" alt="" class="jackpot" v-show="index==0">
             </div>
@@ -15,6 +15,14 @@
 
 <script>
 export default {
+    props:{
+        gameList:{
+            type:Array
+        },
+        gameRecommend:{
+            type:Object
+        }
+    },
     data(){
         return {
             list:[
@@ -50,6 +58,12 @@ export default {
                 },
             ]
         }
+    },
+    created(){
+        // console.log("games",this.gameList,this.gameRecommend)
+    },
+    mounted(){
+        console.log("games",this.gameList,this.gameRecommend)
     }
 }
 </script>
@@ -57,7 +71,8 @@ export default {
 <style lang="less" scoped>
 @import '~@/styles/main.less';
 .games{
-    margin-top:2.9375rem /* 47/16 */;
+    margin-top:1.2rem;
+    // margin-top:2.9375rem /* 47/16 */;
     .recomment{
         margin-bottom:1.75rem /* 28/16 */;
         img{

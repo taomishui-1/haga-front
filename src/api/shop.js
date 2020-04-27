@@ -3,11 +3,14 @@ import http from '../utils/http'
 let URL = process.env.VUE_APP_VAS_SHOPURI
 
 export default {
-  list(params) {
-    return http.post(URL+'/payment/mall/welfare',params)
+  queryFeedList(params) {
+    return http.post(URL+'/shop/mall/feed?t='+Date.now(),params)
   },
-  list2(params) {
-    return http.post(URL+'/payment/mall/welfare',params)
+  queryDetail(params) {
+    return http.post(URL+'/shop/goods/detail?t='+Date.now(),params)
+  },
+  toExchange(params) {
+    return http.post(URL+'/shop/exchange?t='+Date.now(),params)
   },
   
 }
