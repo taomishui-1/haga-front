@@ -40,7 +40,12 @@
       <tr v-show="lastTrShow"></tr>
     </table>
     <div class="bottom">
-      <img src="@/assets/images/rank/bottom.png" alt="">
+      <img src="@/assets/images/rank/bottom.png" alt="" class="img">
+      <div class="content">
+        <img src="@/assets/images/rank/arrow-double-left.png" alt="" class="left leftMove">
+        <img src="@/assets/images/rank/bottom-text.png" alt="" class="text pulse">
+        <img src="@/assets/images/rank/arrow-double-right.png" alt="" class="right rightMove">
+      </div>
     </div>
   </div>
 
@@ -91,9 +96,32 @@ export default {
   bottom:0;
   left:0;
   height: 7.5rem /* 120/16 */;
-  img{
+  width:100%;
+  .img{
     width:100%;
     height: auto;
+    position: absolute;
+    top:0;
+    left:0;
+    // z-index:1;
+  }
+  .content{
+    display: flex;
+    position: absolute;
+    width:100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    .text{
+      height: 2.25rem /* 36/16 */;
+      margin: 0 2rem;
+    }
+    .left{
+      
+    }
+    .left,.right{
+      width:2.5rem /* 40/16 */;
+    }
   }
 }
 </style>

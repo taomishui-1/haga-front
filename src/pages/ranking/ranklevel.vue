@@ -92,7 +92,7 @@ export default {
   data(){
     return{
       page:1,
-      pageSize:3,
+      pageSize:100,
       bottom3:[],
       top3:[],
       meInfo:{}

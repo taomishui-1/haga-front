@@ -98,6 +98,32 @@ const routes=[
             title:'我的'
         }
     },
+    {
+        path:'/account',
+        title:'个人中心',
+        name:'个人中心',
+        components:{
+            default:()=>import('@/pages/my/account.vue'),
+            header:()=>import('@/pages/header/arrowHeader.vue'),
+            
+        },
+        meta:{
+            title:'个人中心'
+        }
+    },
+    {
+        path:'/link',
+        title:'联系客服',
+        name:'联系客服',
+        components:{
+            default:()=>import('@/pages/my/link.vue'),
+            header:()=>import('@/pages/header/arrowHeader.vue'),
+            
+        },
+        meta:{
+            title:'联系客服'
+        }
+    },
     // 游戏--商城
     {
         path:'/store',

@@ -7,7 +7,7 @@
         <th>等级</th>
         <th>奖励</th>
       </tr>
-      <tr v-for="(item) of list" :key="item.id">
+      <tr v-for="(item) of showList" :key="item.id">
         <td>{{item.rankNo}}</td>
         <td class="name">
           <img :src="item.avatar" alt="">
@@ -17,16 +17,7 @@
         <td>{{item.prizeName?item.prizeName:'——'}}</td>
       </tr>
       <tr v-if="!flag" @click="lookAllList()">
-        <td colspan="4">点击打开完整榜单</td>
-      </tr>
-      <tr v-for="(item,index) of List3" :key="index+1000"  v-else>
-        <td>4</td>
-        <td class="name">
-          <img src="@/assets/images/common/avatar06.png" alt="">
-          <p>JK0123345</p>
-        </td>
-        <td>Lv.48</td>
-        <td>640元礼包</td>
+        <td colspan="4"  class="lookAllButton"><p>点击打开完整榜单</p><img src="@/assets/images/rank/arrow-bottom.png"/></td>
       </tr>
       <tr v-for="(item) of bottom3" :key="item.id">
         <td>{{item.rankNo}}</td>
@@ -39,6 +30,10 @@
       </tr>
       <tr v-show="lastTrShow"></tr>
     </table>
+    <div class="lookAllButton packup" @click="packAllList()" v-if="flag">
+      <p>点击收起完整榜单</p>
+      <img src="@/assets/images/rank/arrow-bottom.png" alt="">
+    </div>
     <div class="bottom">
     </div>
   </div>
@@ -65,9 +60,12 @@ export default {
       List3:[1,2,3],
       flag:false,
       lastTrShow:true,
+      showList:[]
     }
   },
   created(){
+    console.log('creat',this.list)
+    this.lastShow()
     
   },
   mounted(){
@@ -76,15 +74,30 @@ export default {
     }else{
       this.lastTrShow=true
     }
+    window.addEventListener('scroll',function(){
+      // console.log($jq('.rankList').scrollTop())
+    },true)
   },
   methods:{
     lookAllList(){
       this.flag=true
+      this.lastShow()
+    },
+    packAllList(){
+      this.flag=false
+      this.lastShow()
+    },
+    lastShow(){
       if(($jq('table').children().length)%2==0){
         this.lastTrShow=true
       }else{
         this.lastTrShow=false
       }
+      if(!this.flag){
+      this.showList=this.list.slice(0,3)
+    }else{
+      this.showList=this.list
+    }
     }
   }
 

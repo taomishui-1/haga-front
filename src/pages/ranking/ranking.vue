@@ -308,8 +308,27 @@ export default {
 						line-height: 2.375rem /* 38/16 */;
 					}
 				}
-			}
-			
+			}	
+		}
+	}
+	.lookAllButton{
+		width:100%;
+		p{
+			float: left;
+			margin-left:35%;
+			color:@main;
+		}
+		img{
+			width:1.5rem /* 24/16 */;
+			float: left;
+			margin-left:.75rem /* 12/16 */;
+		}
+	}
+	.packup{
+		// height: ;
+		margin-top:1.25rem /* 20/16 */;
+		img{
+			transform: rotate(180deg);
 		}
 	}
 }

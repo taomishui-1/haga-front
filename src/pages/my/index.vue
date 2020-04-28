@@ -2,12 +2,12 @@
   <div id="my">
     <div class="top clearfix">
       <div class="avatar">
-        <img src="@/assets/images/common/avatar01.png" alt class="img" />
+        <img :src="userInfo.avatar" alt class="img" />
         <div class="right">
-          <p class="name">内马尔的YKO</p>
+          <p class="name">{{userInfo.nickname}}</p>
           <div class="level">
             <img src="@/assets/images/my/level.png" alt class="icon" />
-            <span>12.65</span>
+            <span>{{userInfo.premiumLevel}}</span>
           </div>
         </div>
         <!-- <Message></Message> -->
@@ -54,7 +54,7 @@
 
 <script>
 // import store from '@/store/index.js'
-import {Shop} from '@/api'
+// import {Shop} from '@/api'
 // import Message from "@/pages/header/message.vue";
 import $jq from "jquery";
 import {transFragment,transMoney} from '@/utils/trans'
@@ -118,12 +118,6 @@ export default {
     this.userInfo=userInfo
   },
   mounted(){
-    // console.log("store",store,store.state.count)
-    // console.log(">?",this.$store.state.count)
-    console.log('Shop',Shop)
-    Shop.list().then(res=>{
-      console.log("res",res)
-    })
   },
   methods:{
     goPage(path,index){
@@ -176,7 +170,9 @@ export default {
           align-items: center;
           justify-content: center;
           .icon {
-            width: 2.25rem /* 36/16 */;
+            // width: 2.25rem /* 36/16 */;
+            height: 1.3rem;
+            margin-top:0.1rem;
           }
           span {
             font-size: 1rem;
@@ -209,7 +205,7 @@ export default {
     dl{
       flex: 1;
       dt{
-        font-size: 1.375rem /* 22/16 */;
+        font-size: 1.7rem /* 22/16 */;
         color:#2d2d2d;
       }
       dd{
@@ -247,6 +243,7 @@ export default {
       p{
         font-size: 1.5rem /* 24/16 */;
         margin-top:1.125rem /* 18/16 */;
+        font-weight: 900;
       }
     }
   }
@@ -254,13 +251,14 @@ export default {
     width:100%;
     padding:0 2rem /* 32/16 */;
     height: 10.75rem /* 172/16 */;
+    box-sizing: border-box;
     img{
       width:100%;
       height: auto;
     }
   }
   .list{
-    padding:0 2.0625rem /* 33/16 */ 0 4.6875rem /* 75/16 */;
+    padding:0 2.0625rem /* 33/16 */ 0 5rem;
     margin-top:1.75rem /* 28/16 */;
     margin-bottom:11.25rem /* 180/16 */;
     li{
@@ -280,6 +278,7 @@ export default {
         font-size: 1.5rem /* 24/16 */;
         text-align: left;
         margin-left:1.125rem /* 18/16 */;
+        font-weight: 900;
       }
       .arrow{
         width:.8125rem /* 13/16 */;

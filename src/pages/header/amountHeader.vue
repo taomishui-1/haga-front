@@ -32,14 +32,17 @@ export default {
     if(this.$route.path.indexOf('/award')>-1){
       this.messageShow=false
     }
-    console.log()
     var userInfo=JSON.parse(localStorage.getItem('USER_INFO'))
     userInfo.amount=transInteger(userInfo.amount)
     userInfo.billAmount=transFragment(userInfo.billAmount)
     userInfo.jdAmount=transFragment(userInfo.jdAmount)
     this.userInfo=userInfo
+  },
+  watch:{
+    $route(to,from){
+      console.log("arrowH",to,from)
+    }
   }
-
 }
 </script>
 

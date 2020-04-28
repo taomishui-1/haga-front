@@ -33,6 +33,34 @@
     animation: pulse .7s infinite;
   }
 
+  @keyframes leftMove {
+    from {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(-10px);
+    }
+    to {
+      transform: translateX(0px);
+    }
+  }
+  .leftMove {
+    animation: leftMove .7s infinite;
+  }
+  @keyframes rightMove {
+    from {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+    to {
+      transform: translateX(0px);
+    }
+  }
+  .rightMove {
+    animation: rightMove .7s infinite;
+  }
   @-webkit-keyframes star {
     from {
       -webkit-transform: scale3d(1, 1, 1);

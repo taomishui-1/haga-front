@@ -8,7 +8,7 @@ import router from './router'
 import VueWechatTitle from 'vue-wechat-title'
 import Toast from '@/components/toast'
 import store from './store'
-
+import $jq from 'jquery'
 // import $ from 'jquery'
 import App from './App';
 
@@ -28,6 +28,7 @@ Object.keys(filters).forEach(item => {
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
+  $jq(".name p").text(to.name);
   /* 路由发生变化修改页面title */
   if (to.meta.title) {
   document.title = to.meta.title
